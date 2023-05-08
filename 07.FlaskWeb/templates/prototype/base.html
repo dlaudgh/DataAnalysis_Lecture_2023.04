@@ -13,11 +13,7 @@
         * { font-family: 'Noto Sans KR', sans-serif; }
         a { text-decoration: none; }
     </style>
-    <script>
-        function changeQuote() {
-            $('#quoteMsg').html('새로운 명언입니다.');
-        }
-    </script>
+    <script src="{{url_for('static', filename='js/ajax.js')}}"></script>
     {% block additional_head %}{% endblock %}
 </head>
 <body>
@@ -66,8 +62,20 @@
                     <i class="fa fa-envelope me-2"></i>ckiekim@naver.com<br>
                     <img src="{{url_for('static', filename='img/github.png')}}" height="16" class="me-2"><a href="#">ckiekim</a><br>
                     <img src="{{url_for('static', filename='img/facebook.png')}}" height="16" class="me-2"><a href="#">ckiekimFB</a><br>
-                    <img src="{{url_for('static', filename='img/addr.png')}}" height="16" class="me-2">수원시 장안구
-                        <a href="#"><span class="badge bg-secondary">날씨</span></a><br>
+                    <a href="#" onclick="changeAddr(); return false;">
+                        <img src="{{url_for('static', filename='img/addr.png')}}" height="16" class="me-2">
+                    </a>
+                        <span id="addr">{{addr}}</span>
+                        <a href="javascript:changeWeather()"><span class="badge bg-secondary">날씨</span></a>
+                    <div id="addrInput" class="mt-2 d-none">
+                        <input type="text" id="addrInputTag" class="form-control form-control-sm"
+                            onkeyup="if(window.event.keyCode==13) {addrSubmit()}">
+                        <a href="javascript:addrSubmit()">
+                            <span class="badge bg-primary">확인</span>
+                        </a>
+                        
+                    </div>
+                    <div id="weather"></div>
                     <button class="btn btn-sm btn-outline-primary mt-3">Edit Profile</button>
                 </div>
             </div>

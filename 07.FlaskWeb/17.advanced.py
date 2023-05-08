@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from weather_util import get_weather, get_weather_by_coord
 import crawl_util as cu
 import map_util as mu
+import image_util as iu
 import os, random
 
 app = Flask(__name__)
@@ -35,6 +36,15 @@ def weather():
     lat, lng = mu.get_coord(addr + '청')
     html = get_weather_by_coord(app, lat, lng)
     return html
+
+@app.route('/change_profile', methods=['POST'])
+def change_profile():
+    file_image = request.files['image']
+    filename = os.path.join(app.static_folder, f'upload/{file_image.filename}')
+    print(filename)
+    file_image.save(filename)
+    mtime = iu.change_profile(app, filename)
+    return str(mtime)
 ##############################################
 
 @app.route('/')

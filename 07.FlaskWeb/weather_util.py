@@ -13,7 +13,7 @@ def get_weather(app):
     icon_url = f'http://api.openweathermap.org/img/w/{icon_code}.png'
     temp_ = result['main']['temp']
     temp = round(float(temp_), 1)
-    html = f'''<img src="{icon_url}" height="32"<strong>{desc}</strong>
+    html = f'''<img src="{icon_url}" height="32"<strong>{desc}</strong>,
                 온도: <strong>{temp}</strong>&#8451'''
     return html
 
@@ -29,6 +29,6 @@ def get_weather_by_coord(app, lat, lng):
     icon_url = f'http://api.openweathermap.org/img/w/{icon_code}.png'
     temp_ = result['main']['temp']
     temp = round(float(temp_), 1)
-    html = f'''<img src="{icon_url}" height="32"<strong>{desc}</strong>
+    html = f'''<img src="{icon_url}" height="32"<strong>{desc}</strong>,
                 온도: <strong>{temp}</strong>&#8451'''
     return html

@@ -36,3 +36,24 @@ function changeWeather() {
         }
     });
 }
+
+function changeProfile() {
+    $('#imageInput').attr('class', 'mt-2');
+}
+function imageSubmit() {
+    let imageInputVal = $('#image')[0];
+    let formData = new FormData();
+    formData.append('image', imageInputVal.files[0]);
+    $.ajax({
+        type: 'POST',
+        url: '/change_profile',
+        data: formData,
+        processData: false,
+        contentType: false,
+        success: function(result) {
+            $('#imageInput').attr('class', 'mt-2 d-none');
+            let fname = 'http://127.0.0.1:5000/static/data/profile.png?q=' + result;
+            $('#profile').attr('src', fname);
+        }
+    });
+}

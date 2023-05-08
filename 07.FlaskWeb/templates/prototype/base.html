@@ -53,15 +53,24 @@
     <div class="container" style="margin-top:80px">
         <div class="row">
             <div class="col-3">
-                <img src="https://picsum.photos/256/256" class="rounded-circle" width="90%">
+                <a href="javascript:changeProfile()">
+                    <img id="profile" src="{{url_for('static', filename='data/profile.png')}}" class="rounded-circle" width="90%">
+                    <!-- <img src="https://picsum.photos/256/256" class="rounded-circle" width="90%"> -->
+                </a>
+                <div id="imageInput" class="mt-2 d-none">
+                    <input type="file" id="image" class="form-control form-control-sm">
+                    <a href="javascript:imageSubmit()">
+                        <span class="badge bg-primary">확인</span>
+                    </a>
+                </div>
                 <div class="mt-2">
                     <span id="quoteMsg">{{quote}}</span>
                     <a href="javascript:changeQuote()"><span class="badge bg-secondary">수정</span></a>
                 </div>
                 <div class="mt-5">
-                    <i class="fa fa-envelope me-2"></i>ckiekim@naver.com<br>
-                    <img src="{{url_for('static', filename='img/github.png')}}" height="16" class="me-2"><a href="#">ckiekim</a><br>
-                    <img src="{{url_for('static', filename='img/facebook.png')}}" height="16" class="me-2"><a href="#">ckiekimFB</a><br>
+                    <i class="fa fa-envelope me-2"></i>beautifool23<br>
+                    <img src="{{url_for('static', filename='img/github.png')}}" height="16" class="me-2"><a href="#">beautifool23</a><br>
+                    <img src="{{url_for('static', filename='img/facebook.png')}}" height="16" class="me-2"><a href="#">beautifool23</a><br>
                     <a href="#" onclick="changeAddr(); return false;">
                         <img src="{{url_for('static', filename='img/addr.png')}}" height="16" class="me-2">
                     </a>

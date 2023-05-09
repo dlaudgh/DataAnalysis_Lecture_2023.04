@@ -95,6 +95,13 @@ def genie():
     return render_template('prototype/genie.html', song_list=song_list, 
                            menu=menu, weather=get_weather(app), quote=quote, addr=addr)
 
+@app.route('/genie_jquery')
+def genie_jquery():
+    menu = {'ho':0, 'us':0, 'cr':1, 'sc':0}
+    song_list = cu.genie()
+    return render_template('prototype/genie_jquery.html', song_list=song_list, 
+                           menu=menu, weather=get_weather(app), quote=quote, addr=addr)
+
 @app.route('/siksin', methods=['GET', 'POST'])
 def siksin():
     menu = {'ho':0, 'us':0, 'cr':1, 'sc':0}

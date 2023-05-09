@@ -7,7 +7,7 @@ user_bp = Blueprint('user_bp', __name__)
 @user_bp.route('/login', methods=['GET','POST'])        # localhost:5000/user/login 이 처리되는 곳
 def login():
     if request.method == 'GET':
-        return render_template('prototype/login.html')
+        return render_template('prototype/user/login.html')
     else:
         uid = request.form['uid']
         pwd = request.form['pwd']
@@ -36,4 +36,4 @@ def logout():
 
 @user_bp.route('/register')
 def register():
-    return render_template('prototype/register.html')
+    return render_template('prototype/user/register.html')

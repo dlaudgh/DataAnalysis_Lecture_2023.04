@@ -43,20 +43,10 @@
                     <a class="nav-link {% if menu.sc %}active{% endif %}" href="{% if menu.sc %}#{% else %}/schedule{% endif %}"><i class="fa-solid fa-calendar-days"></i> 스케쥴</a>
                 </li>
                 <li class="nav-item ms-3">
-                    {% if session['uid'] %}
-                        <a class="nav-link" href="/user/logout"><i class="fas fa-sign-out-alt"></i> 로그아웃</a>
-                    {% else %}
-                        <a class="nav-link" href="/user/login"><i class="fas fa-sign-out-alt"></i> 로그인</a>
-                    {% endif %}
+                    <a class="nav-link" href="#"><i class="fas fa-sign-out-alt"></i> 로그아웃</a>
                 </li>
             </ul>
-            <span class="navbar-text me-3">
-                {% if session['uid'] %}
-                    {{session['uid']}}님 환영합니다.
-                {% else %}
-                    {% block weather %}{% endblock %}
-                {% endif %}
-            </span>
+            <span class="navbar-text me-3">{% block weather %}{% endblock %}</span>
         </div>
     </nav>
 
@@ -74,7 +64,7 @@
                     </a>
                 </div>
                 <div class="mt-2">
-                    <span id="quoteMsg">{{session['quote']}}</span>
+                    <span id="quoteMsg">{{quote}}</span>
                     <a href="javascript:changeQuote()"><span class="badge bg-secondary">수정</span></a>
                 </div>
                 <div class="mt-5">
@@ -84,7 +74,7 @@
                     <a href="#" onclick="changeAddr(); return false;">
                         <img src="{{url_for('static', filename='img/addr.png')}}" height="16" class="me-2">
                     </a>
-                        <span id="addr">{{session['addr']}}</span>
+                        <span id="addr">{{addr}}</span>
                         <a href="javascript:changeWeather()"><span class="badge bg-secondary">날씨</span></a>
                     <div id="addrInput" class="mt-2 d-none">
                         <input type="text" id="addrInputTag" class="form-control form-control-sm"
@@ -113,13 +103,6 @@
             </span>
         </div>
     </nav>
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            <script>
-                alert("{{messages[-1]}}")
-            </script>
-        {% endif %}
-    {% endwith %}
     {% block additional_body %}{% endblock %}
 </body>
 </html>
